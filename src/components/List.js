@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 
 export class List extends Component {
 
-    deleteTask(id) {
-        console.log(id)
-      }
+    
     
   render(props) {
     const iscompleted = this.props.isDone;
@@ -36,8 +34,9 @@ export class List extends Component {
         <div >
            <button  id={this.props.id}
             
-            defaultChecked={this.props.isDone}
+           // defaultChecked={this.props.isDone}
             className='done-button'
+            disabled={this.props.isDone}
             onClick={() => this.props.markTaskDone(this.props.id)} >Done</button>
           <button type="button"  onClick={() => this.props.deleteTask(this.props.id)} >
             Delete 

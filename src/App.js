@@ -7,37 +7,29 @@ import Header from './components/Header';
 
 function App() {
   
-  const taskarray= [ { id: "0", name: "learn basic react", priority:"medium", isDone: true },
-  { id: "1", name: "make a todo app using react", priority:"high", isDone: false },
-  { id: "2", name: "learn advanced concepts", priority:"medium", isDone: false }];
-  
+//   const taskarray= [ 
+//    
+// ];
+
+
   const filters = {
     all: () => true,
     done: task => task.isDone===true,
     pending: task => task.isDone===false
   }
-  const [tasks, updateTaskList] = useState(taskarray);
+  const [tasks, updateTaskList] = useState([]);
   const [filter, setFilter] = useState('all');
 
-  const taskList =  tasks.filter(filters[filter]).map(task => (
-    <List
-        id={task.id}
-        name={task.name}
-        priority={task.priority}
-        isDone={task.isDone}
-        markTaskDone={markTaskDone}
-        key={task.id}
-        deleteTask={deleteTask}
-      />
-    )
-  );
-
-  //const LS = JSON.stringify(taskList);
-  localStorage.setItem("array", taskList);
+  window.localStorage.setItem("LS", JSON.stringify(tasks));
+  const todo = window.localStorage.getItem("LS");
+  const taskss=JSON.parse(todo);
+  
 
   function addTask(name,priority) {
     const newTask = { id: taskList.length, name: name, priority:priority, isDone: false };
+    
     updateTaskList([...tasks, newTask]);
+    //window.localStorage.setItem("LS", JSON.stringify(tasks));
   }
   
   function markTaskDone(id) {
@@ -48,6 +40,7 @@ function App() {
       return task;
     });
     updateTaskList(updatedTasks);
+    
   }
 
   function deleteTask(id) {
@@ -56,8 +49,13 @@ function App() {
   }
 
   function deleteAll(){
+    console.log('task list',taskList)
+    console.log('taskss',taskss)
+    console.log('tasks',tasks)
     const reset = [];
-    updateTaskList(reset); 
+   // updateTaskList(reset); 
+    
+    
   }
    
   function filterTasks(value){
@@ -72,19 +70,19 @@ function App() {
     }
      }
 
-  // const todos = localStorage.getItem("array");
-  // const taskList2 =  todos.filter(filters[filter]).map(task => (
-  //   <List
-  //       id={task.id}
-  //       name={task.name}
-  //       priority={task.priority}
-  //       isDone={task.isDone}
-  //       markTaskDone={markTaskDone}
-  //       key={task.id}
-  //       deleteTask={deleteTask}
-  //     />
-  //   )
-  // );
+   
+  const taskList =  tasks.filter(filters[filter]).map(task => (
+    <List
+        id={task.id}
+        name={task.name}
+        priority={task.priority}
+        isDone={task.isDone}
+        markTaskDone={markTaskDone}
+        key={task.id}
+        deleteTask={deleteTask}
+      />
+    )
+  );
 
   return (
     <div className='body'>

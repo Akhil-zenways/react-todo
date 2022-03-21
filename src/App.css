@@ -113,6 +113,7 @@ h1 {
   border: 3px solid #101028;
   color: #101028;
 }
+
 .todo_list {
   display: flex;
   flex-direction: row;
@@ -152,8 +153,13 @@ h1 {
   .clear-all {
     font-size: 8px;
   }
+  .add-button {
+    margin: 2rem;
+    height: 40px;
+    width: 88%;
+  }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 500px) {
   .filter {
     display: flex;
     flex-direction: column;
@@ -169,6 +175,11 @@ h1 {
   }
   .todo_list {
     width: 88%;
+  }
+  .list-items {
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
   }
   .select {
     width: 97%;
