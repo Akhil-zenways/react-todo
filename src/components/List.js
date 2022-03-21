@@ -7,7 +7,7 @@ export class List extends Component {
       }
     
   render(props) {
-    const iscompleted = this.props.completed;
+    const iscompleted = this.props.isDone;
     let lable;
     if (iscompleted) {
       lable = <label className='line-through' >
@@ -36,7 +36,7 @@ export class List extends Component {
         <div >
            <button  id={this.props.id}
             
-            defaultChecked={this.props.completed}
+            defaultChecked={this.props.isDone}
             className='done-button'
             onClick={() => this.props.markTaskDone(this.props.id)} >Done</button>
           <button type="button"  onClick={() => this.props.deleteTask(this.props.id)} >

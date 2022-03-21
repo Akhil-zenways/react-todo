@@ -7,36 +7,47 @@ import Header from './components/Header';
 
 function App() {
   
-  const taskarray= [];
+  const taskarray= [ { id: "0", name: "learn basic react", priority:"medium", isDone: true },
+  { id: "1", name: "make a todo app using react", priority:"high", isDone: false },
+  { id: "2", name: "learn advanced concepts", priority:"medium", isDone: false }];
+  
   const filters = {
     all: () => true,
-    done: task => task.completed===true,
-    pending: task => task.completed===false
+    done: task => task.isDone===true,
+    pending: task => task.isDone===false
   }
   const [tasks, updateTaskList] = useState(taskarray);
   const [filter, setFilter] = useState('all');
 
-  
-  
- 
-  
+  const taskList =  tasks.filter(filters[filter]).map(task => (
+    <List
+        id={task.id}
+        name={task.name}
+        priority={task.priority}
+        isDone={task.isDone}
+        markTaskDone={markTaskDone}
+        key={task.id}
+        deleteTask={deleteTask}
+      />
+    )
+  );
+
+  //const LS = JSON.stringify(taskList);
+  localStorage.setItem("array", taskList);
 
   function addTask(name,priority) {
-    const newTask = { id: taskList.length, name: name, priority:priority, completed: false };
+    const newTask = { id: taskList.length, name: name, priority:priority, isDone: false };
     updateTaskList([...tasks, newTask]);
-    console.log("a",filter);
   }
   
   function markTaskDone(id) {
-    console.log(tasks);
     const updatedTasks = tasks.map(task => {
       if (id === task.id) {
-        return {...task, completed: !task.completed}
+        return {...task, isDone: !task.isDone}
       }
       return task;
     });
     updateTaskList(updatedTasks);
-    
   }
 
   function deleteTask(id) {
@@ -45,50 +56,36 @@ function App() {
   }
 
   function deleteAll(){
-    console.log("clear");
     const reset = [];
-    updateTaskList(reset);
-    
+    updateTaskList(reset); 
   }
-  
-  
    
   function filterTasks(value){
-    //let filteredTasks;
     if(value==="all"){
-     //filteredTasks = () => true;
      setFilter('all');
     }
     if(value==="done"){
-      //filteredTasks =  true;
       setFilter('done');
     }
     if(value==="pending"){
-      //filteredTasks = task => task.completed == false;
       setFilter('pending');
     }
-    
-    
-    
-    //setFilter(filteredTasks);
-    console.log(filter);
-  }
+     }
 
+  // const todos = localStorage.getItem("array");
+  // const taskList2 =  todos.filter(filters[filter]).map(task => (
+  //   <List
+  //       id={task.id}
+  //       name={task.name}
+  //       priority={task.priority}
+  //       isDone={task.isDone}
+  //       markTaskDone={markTaskDone}
+  //       key={task.id}
+  //       deleteTask={deleteTask}
+  //     />
+  //   )
+  // );
 
-  const taskList =  tasks.filter(filters[filter]).map(task => (
-    <List
-        id={task.id}
-        name={task.name}
-        priority={task.priority}
-        completed={task.completed}
-        markTaskDone={markTaskDone}
-        key={task.id}
-        deleteTask={deleteTask}
-      />
-    )
-  );
-  // localStorage.setItem("todo",taskList);
-  // const todo = localStorage.getItem('todo');
   return (
     <div className='body'>
     <div className='container' >

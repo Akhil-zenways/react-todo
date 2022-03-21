@@ -11,6 +11,7 @@ button {
 .header {
   display: flex;
   justify-content: space-between;
+  width: 95%;
 }
 .clear-all {
   border: 0px;
@@ -19,6 +20,7 @@ button {
   padding: 12px;
   margin: 24px;
   margin-right: 0;
+  margin-left: 0;
   background-color: #22eba5;
   font-weight: 100px;
   width: 18%;
@@ -27,6 +29,8 @@ button {
 .form-group {
   display: flexbox;
   flex-direction: row;
+  justify-content: center;
+
   margin: 30px;
 }
 .container {
@@ -46,7 +50,7 @@ html {
   outline: 0;
   color: darkgray;
   padding: 0 1.5rem;
-  width: 100%;
+  width: 92%;
   height: 40px;
   margin: 8px 0;
   cursor: pointer;
@@ -60,7 +64,7 @@ html {
   cursor: pointer;
   padding: 0 1.5rem;
   height: 40px;
-  width: 108%;
+  width: 100%;
   margin: 8px 0;
 }
 
@@ -75,7 +79,7 @@ h1 {
   margin-left: 28px;
 }
 .add-button {
-  width: 99%;
+  width: 91%;
   border: 0px;
   border-radius: 40px;
   height: 40px;
@@ -89,10 +93,9 @@ h1 {
   padding: 1.5rem, 3rem;
 }
 .filter {
-  /* align-items: center center;
-  display: flexbox;
-  justify-content: space-around; */
-  width: 110%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .filter-button {
   border: 3px solid #22eba5;
@@ -100,7 +103,7 @@ h1 {
   padding: 12px;
   margin: 2rem;
   height: 40px;
-  min-width: 24%;
+  min-width: 18%;
   background-color: #101028;
   color: #22eba5;
   cursor: pointer;
@@ -117,13 +120,16 @@ h1 {
   align-items: center;
   background: #292d4a;
   margin-bottom: 1.5rem;
-  width: 105%;
+  margin-right: 8px;
+  width: 97%;
+  justify-self: center;
   border-radius: 5px;
 }
 
 .list-items {
   display: flexbox;
   flex-direction: row;
+  justify-content: center;
 }
 .line-through {
   text-decoration-line: line-through;
@@ -133,4 +139,38 @@ h1 {
 .error {
   color: #dc3545;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  button {
+    font-size: 10px;
+  }
+  .add-button {
+    font-size: 12px;
+    width: 95%;
+  }
+  .clear-all {
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .filter {
+    display: flex;
+    flex-direction: column;
+  }
+  .add-button {
+    margin: 2rem;
+    height: 40px;
+    width: 82%;
+    min-width: 18%;
+  }
+  .input {
+    width: 82%;
+  }
+  .todo_list {
+    width: 88%;
+  }
+  .select {
+    width: 97%;
+  }
 }

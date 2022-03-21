@@ -14,7 +14,7 @@ export class Button extends Component {
       </button>
        <button type="button" className='filter-button' onClick={() => this.props.filterTasks('done')}>
        
-       <span>Completed </span>
+       <span>Done </span>
       
      </button>
       <button type="button" className='filter-button' onClick={() => this.props.filterTasks('pending')}>
