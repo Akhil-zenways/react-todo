@@ -126,6 +126,11 @@ h1 {
   justify-self: center;
   border-radius: 5px;
 }
+.task-labels {
+  display: flexbox;
+  flex-direction: column;
+  justify-content: left;
+}
 
 .list-items {
   display: flexbox;
